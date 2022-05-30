@@ -5,17 +5,14 @@ const cors = require("cors");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
-var app = express();
-app.use(cors());
+const mongoose = require("mongoose");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const movieRouter = require("./routes/moviesRouter");
 
-require("dotenv").config();
-
-const mongoose = require("mongoose");
+var app = express();
+app.use(cors());
 
 const url =
     "mongodb+srv://soo123:" +
@@ -34,7 +31,7 @@ connect.then(
     (err) => console.log(err)
 );
 
-app.listen(process.env.PORT || "8000");
+app.listen(process.env.PORT || 8000);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
